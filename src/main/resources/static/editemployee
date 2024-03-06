@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee Details</title>
+</head>
+<body>
+    <h2>Edit Employee Details</h2>
+    <form action="/employees/${employee.id}/edit" method="post" modelAttribute="employee">
+        <input type="hidden" id="id" name="id" value="${employee.id}">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="${employee.name}" required><br>
+        <label for="department">Department:</label><br>
+        <select id="department" name="department">
+            <option value="IT" ${employee.department eq 'IT' ? 'selected' : ''}>IT</option>
+            <option value="HR" ${employee.department eq 'HR' ? 'selected' : ''}>HR</option>
+            <option value="Finance" ${employee.department eq 'Finance' ? 'selected' : ''}>Finance</option>
+            <option value="Marketing" ${employee.department eq 'Marketing' ? 'selected' : ''}>Marketing</option>
+        </select><br>
+        <label for="designation">Designation:</label><br>
+        <input type="text" id="designation" name="designation" value="${employee.designation}" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="${employee.email}" required><br>
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="text" id="phoneNumber" name="phoneNumber" value="${employee.phoneNumber}" required pattern="[0-9]{10}"><br>
+        <input type="submit" value="Update Employee">
+    </form>
+</body>
+</html>
